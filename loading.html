@@ -36,7 +36,6 @@
             z-index: 0;
         }
 
-        /* Distant mountains/hills silhouette */
         .mountains {
             position: fixed;
             bottom: 12%;
@@ -54,7 +53,6 @@
             clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
         }
 
-        /* Moon */
         .moon {
             position: fixed;
             top: 15%;
@@ -78,7 +76,6 @@
                 inset 10px 10px 20px rgba(255, 255, 255, 0.05);
         }
 
-        /* Moon craters */
         .moon::before {
             content: '';
             position: absolute;
@@ -100,33 +97,6 @@
                 10px 35px 0 -4px rgba(0, 0, 0, 0.07);
         }
 
-        .moon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 95px;
-            height: 95px;
-            background: radial-gradient(circle at 35% 30%, 
-                rgba(240, 240, 250, 0.12) 0%,
-                rgba(220, 220, 240, 0.06) 50%,
-                transparent 80%);
-            border-radius: 50%;
-        }
-
-        /* Moon surface texture */
-        .moon-crater {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, 
-                rgba(0, 0, 0, 0.2) 0%,
-                rgba(0, 0, 0, 0.1) 40%,
-                transparent 70%);
-            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Moon glow on ground */
         .moon-glow {
             position: fixed;
             bottom: 0;
@@ -140,7 +110,6 @@
             filter: blur(20px);
         }
 
-        /* Additional atmospheric layers */
         .atmosphere {
             position: fixed;
             top: 0;
@@ -159,7 +128,6 @@
             50% { opacity: 1; }
         }
 
-        /* Distant city lights/haze */
         .distant-lights {
             position: fixed;
             bottom: 10%;
@@ -174,47 +142,6 @@
             filter: blur(15px);
         }
 
-        /* Heat shimmer effect on horizon */
-        .heat-shimmer {
-            position: fixed;
-            bottom: 10%;
-            left: 0;
-            width: 100%;
-            height: 8%;
-            background: linear-gradient(to top,
-                rgba(255, 255, 255, 0.01) 0%,
-                transparent 100%);
-            z-index: 3;
-            animation: shimmer 4s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { 
-                transform: translateY(0) scaleY(1);
-                opacity: 0.3;
-            }
-            50% { 
-                transform: translateY(-2px) scaleY(1.1);
-                opacity: 0.5;
-            }
-        }
-
-        /* Smog/pollution layer */
-        .smog-layer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40%;
-            background: linear-gradient(to top,
-                rgba(40, 35, 30, 0.4) 0%,
-                rgba(30, 25, 25, 0.2) 30%,
-                transparent 100%);
-            z-index: 3;
-            mix-blend-mode: multiply;
-        }
-
-        /* Helicopter in distance */
         .helicopter {
             position: fixed;
             top: 18%;
@@ -263,137 +190,6 @@
             50% { opacity: 0.3; }
         }
 
-        /* Birds flying */
-        .bird {
-            position: fixed;
-            width: 3px;
-            height: 2px;
-            z-index: 2;
-            opacity: 0.4;
-        }
-
-        .bird::before,
-        .bird::after {
-            content: '';
-            position: absolute;
-            width: 5px;
-            height: 1px;
-            background: rgba(40, 40, 45, 0.6);
-            top: 0;
-        }
-
-        .bird::before {
-            left: -3px;
-            transform: rotate(-20deg);
-            animation: wingFlap 0.8s ease-in-out infinite;
-        }
-
-        .bird::after {
-            right: -3px;
-            transform: rotate(20deg);
-            animation: wingFlap 0.8s ease-in-out infinite reverse;
-        }
-
-        @keyframes wingFlap {
-            0%, 100% { transform: rotate(-25deg); }
-            50% { transform: rotate(-10deg); }
-        }
-
-        /* Searchlight beam from helicopter */
-        .searchlight {
-            position: fixed;
-            top: 20%;
-            left: 15%;
-            width: 60px;
-            height: 200px;
-            background: linear-gradient(to bottom,
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(200, 200, 255, 0.04) 50%,
-                transparent 100%);
-            transform-origin: top center;
-            filter: blur(8px);
-            z-index: 4;
-            animation: searchlightSweep 40s linear infinite;
-            mix-blend-mode: screen;
-        }
-
-        @keyframes searchlightSweep {
-            0% { left: -5%; transform: rotate(-10deg); }
-            25% { left: 30%; transform: rotate(5deg); }
-            50% { left: 60%; transform: rotate(-5deg); }
-            75% { left: 85%; transform: rotate(8deg); }
-            100% { left: 105%; transform: rotate(-10deg); }
-        }
-
-        /* Rain effect */
-        .rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 8;
-            pointer-events: none;
-        }
-
-        .raindrop {
-            position: absolute;
-            width: 1px;
-            height: 15px;
-            background: linear-gradient(to bottom, 
-                transparent 0%,
-                rgba(150, 180, 200, 0.3) 50%,
-                transparent 100%);
-            animation: rainFall 1s linear infinite;
-        }
-
-        @keyframes rainFall {
-            0% {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-        }
-
-        /* Steam from manholes */
-        .steam {
-            position: fixed;
-            bottom: 5%;
-            width: 30px;
-            height: 60px;
-            background: radial-gradient(ellipse at bottom,
-                rgba(200, 200, 210, 0.15) 0%,
-                rgba(180, 180, 200, 0.08) 40%,
-                transparent 70%);
-            z-index: 5;
-            filter: blur(5px);
-            animation: steamRise 4s ease-out infinite;
-        }
-
-        @keyframes steamRise {
-            0% {
-                transform: translateY(0) scaleX(1);
-                opacity: 0;
-            }
-            20% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-80px) scaleX(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* Distant airplane */
         .airplane {
             position: fixed;
             top: 8%;
@@ -488,28 +284,27 @@
             z-index: 3;
         }
 
-        .city-far {
+        .city-far, .city-mid, .city-near {
             position: absolute;
-            bottom: 15%;
+            bottom: 0;
             width: 100%;
+        }
+
+        .city-far {
+            bottom: 15%;
             height: 25%;
             opacity: 0.3;
             filter: blur(2px);
         }
 
         .city-mid {
-            position: absolute;
             bottom: 8%;
-            width: 100%;
             height: 35%;
             opacity: 0.5;
             filter: blur(1px);
         }
 
         .city-near {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
             height: 45%;
             opacity: 0.8;
         }
@@ -547,328 +342,6 @@
                     rgba(20, 20, 25, 0.4) 11px);
         }
 
-        /* Building edges/corners */
-        .building-edge-left {
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom,
-                rgba(60, 60, 70, 0.4) 0%,
-                rgba(40, 40, 50, 0.3) 50%,
-                rgba(30, 30, 40, 0.2) 100%);
-        }
-
-        .building-edge-right {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom,
-                rgba(5, 5, 10, 0.6) 0%,
-                rgba(3, 3, 8, 0.5) 50%,
-                rgba(2, 2, 5, 0.4) 100%);
-        }
-
-        /* Balconies */
-        .balcony {
-            position: absolute;
-            width: 8px;
-            height: 3px;
-            background: rgba(25, 25, 30, 0.7);
-            border-bottom: 1px solid rgba(40, 40, 45, 0.5);
-            box-shadow: 
-                inset 0 -1px 1px rgba(0, 0, 0, 0.5),
-                0 1px 0 rgba(60, 60, 65, 0.2);
-        }
-
-        /* Ventilation shafts */
-        .vent-shaft {
-            position: absolute;
-            width: 6px;
-            height: 8px;
-            background: linear-gradient(to bottom,
-                rgba(20, 20, 25, 0.9) 0%,
-                rgba(15, 15, 20, 0.8) 100%);
-            border-radius: 1px;
-            box-shadow: 
-                inset 0 1px 2px rgba(0, 0, 0, 0.6),
-                0 1px 0 rgba(50, 50, 55, 0.3);
-        }
-
-        .vent-shaft::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 1px;
-            right: 1px;
-            height: 50%;
-            background: repeating-linear-gradient(0deg,
-                transparent 0px,
-                transparent 1px,
-                rgba(40, 40, 45, 0.5) 1px,
-                rgba(40, 40, 45, 0.5) 2px);
-        }
-
-        /* Water towers */
-        .water-tower {
-            position: absolute;
-            width: 14px;
-            height: 16px;
-            top: -20px;
-        }
-
-        .water-tower::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 5px;
-            width: 4px;
-            height: 8px;
-            background: linear-gradient(to bottom,
-                rgba(35, 35, 40, 0.7) 0%,
-                rgba(30, 30, 35, 0.8) 100%);
-        }
-
-        .water-tower::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 14px;
-            height: 10px;
-            background: linear-gradient(to bottom,
-                rgba(40, 35, 35, 0.8) 0%,
-                rgba(35, 30, 30, 0.9) 100%);
-            border-radius: 50% 50% 0 0;
-            box-shadow: 
-                inset 0 -2px 4px rgba(0, 0, 0, 0.5),
-                0 1px 0 rgba(60, 60, 65, 0.2);
-        }
-
-        /* Satellite dishes */
-        .satellite-dish {
-            position: absolute;
-            width: 8px;
-            height: 4px;
-            background: radial-gradient(ellipse at center,
-                rgba(45, 45, 50, 0.8) 0%,
-                rgba(35, 35, 40, 0.7) 60%,
-                transparent 100%);
-            border-radius: 50% 50% 40% 40%;
-            transform: perspective(10px) rotateX(45deg);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-        }
-
-        /* Chimneys */
-        .chimney {
-            position: absolute;
-            width: 5px;
-            height: 15px;
-            background: linear-gradient(to right,
-                rgba(30, 25, 25, 0.9) 0%,
-                rgba(35, 30, 30, 0.85) 50%,
-                rgba(25, 20, 20, 0.9) 100%);
-            box-shadow: 
-                inset -1px 0 2px rgba(0, 0, 0, 0.5),
-                1px 0 0 rgba(50, 50, 55, 0.3);
-        }
-
-        .chimney::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -1px;
-            right: -1px;
-            height: 3px;
-            background: rgba(35, 30, 30, 0.9);
-            box-shadow: 0 1px 0 rgba(50, 50, 55, 0.4);
-        }
-
-        /* Smoke from chimneys */
-        .smoke {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 25px;
-            background: radial-gradient(ellipse at bottom,
-                rgba(180, 180, 190, 0.1) 0%,
-                rgba(160, 160, 170, 0.05) 50%,
-                transparent 100%);
-            filter: blur(3px);
-            animation: smokeDrift 4s ease-in-out infinite;
-        }
-
-        @keyframes smokeDrift {
-            0% {
-                transform: translateX(-50%) translateY(0) scaleX(1);
-                opacity: 0;
-            }
-            20% {
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateX(-40%) translateY(-30px) scaleX(1.8);
-                opacity: 0;
-            }
-        }
-
-        /* Rooftop gardens */
-        .rooftop-garden {
-            position: absolute;
-            top: -4px;
-            background: rgba(20, 40, 25, 0.6);
-            height: 4px;
-            border-radius: 1px 1px 0 0;
-            box-shadow: 
-                inset 0 1px 2px rgba(0, 50, 0, 0.3),
-                0 -1px 0 rgba(40, 80, 50, 0.3);
-        }
-
-        /* Window AC units sticking out */
-        .window-ac {
-            position: absolute;
-            width: 4px;
-            height: 3px;
-            background: linear-gradient(to bottom,
-                rgba(35, 35, 40, 0.9) 0%,
-                rgba(30, 30, 35, 0.85) 100%);
-            box-shadow: 
-                0 1px 2px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(50, 50, 55, 0.3);
-        }
-
-        /* Neon signs - enhanced */
-        .neon-sign {
-            position: absolute;
-            background: rgba(0, 200, 255, 0.4);
-            box-shadow: 
-                0 0 10px rgba(0, 200, 255, 0.6),
-                0 0 20px rgba(0, 200, 255, 0.3);
-            animation: neonFlicker 3s ease-in-out infinite;
-        }
-
-        .neon-sign.pink {
-            background: rgba(255, 0, 150, 0.4);
-            box-shadow: 
-                0 0 10px rgba(255, 0, 150, 0.6),
-                0 0 20px rgba(255, 0, 150, 0.3);
-        }
-
-        .neon-sign.yellow {
-            background: rgba(255, 230, 0, 0.4);
-            box-shadow: 
-                0 0 10px rgba(255, 230, 0, 0.6),
-                0 0 20px rgba(255, 230, 0, 0.3);
-        }
-
-        .building-antenna {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            width: 2px;
-            height: 30px;
-            background: linear-gradient(to top, rgba(200, 0, 0, 0.8), transparent);
-            box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
-        }
-
-        .building-antenna::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -2px;
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 0, 0, 0.9);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
-            animation: beaconBlink 2s ease-in-out infinite;
-        }
-
-        /* Rooftop details */
-        .rooftop-detail {
-            position: absolute;
-            top: -8px;
-            background: rgba(20, 20, 25, 0.8);
-            height: 8px;
-            border-radius: 1px;
-        }
-
-        /* Air conditioning units on roofs */
-        .ac-unit {
-            position: absolute;
-            top: -12px;
-            width: 10px;
-            height: 12px;
-            background: linear-gradient(to bottom, rgba(30, 30, 35, 0.9), rgba(20, 20, 25, 0.8));
-            border-radius: 1px;
-            box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Fire escapes */
-        .fire-escape {
-            position: absolute;
-            width: 2px;
-            background: rgba(40, 40, 45, 0.6);
-            box-shadow: 1px 0 0 rgba(60, 60, 65, 0.4);
-        }
-
-        .fire-escape::before {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 2px;
-            background: rgba(40, 40, 45, 0.5);
-            left: 0;
-        }
-
-        /* Billboard on building */
-        .billboard {
-            position: absolute;
-            background: linear-gradient(135deg, 
-                rgba(255, 100, 100, 0.3) 0%,
-                rgba(255, 150, 100, 0.25) 50%,
-                rgba(255, 100, 150, 0.3) 100%);
-            box-shadow: 
-                0 0 20px rgba(255, 100, 100, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            animation: billboardFlicker 6s ease-in-out infinite;
-        }
-
-        @keyframes billboardFlicker {
-            0%, 100% { opacity: 0.6; }
-            25% { opacity: 0.85; }
-            50% { opacity: 0.7; }
-            75% { opacity: 0.9; }
-        }
-
-        /* Neon signs */
-        .neon-sign {
-            position: absolute;
-            background: rgba(0, 200, 255, 0.4);
-            box-shadow: 
-                0 0 10px rgba(0, 200, 255, 0.6),
-                0 0 20px rgba(0, 200, 255, 0.3);
-            animation: neonFlicker 3s ease-in-out infinite;
-        }
-
-        @keyframes neonFlicker {
-            0%, 100% { opacity: 0.8; }
-            10% { opacity: 0.3; }
-            15% { opacity: 0.9; }
-            20% { opacity: 0.4; }
-            25% { opacity: 1; }
-        }
-
-        @keyframes beaconBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
         .window {
             position: absolute;
             background: rgba(255, 220, 180, 0.4);
@@ -883,178 +356,42 @@
             75% { opacity: 0.8; }
         }
 
-        .street-level {
+        .rain {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
-            width: 100%;
-            height: 15%;
-            background: linear-gradient(to top, 
-                rgba(0, 0, 0, 1) 0%,
-                rgba(10, 5, 5, 0.9) 30%,
-                transparent 100%);
-            z-index: 4;
-        }
-
-        .street-lights {
-            position: absolute;
-            bottom: 0;
             width: 100%;
             height: 100%;
+            z-index: 8;
+            pointer-events: none;
         }
 
-        .street-light {
+        .raindrop {
             position: absolute;
-            bottom: 20%;
-        }
-
-        .street-light::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            height: 60px;
-            background: linear-gradient(to top, rgba(80, 80, 90, 0.8), rgba(60, 60, 70, 0.4));
-            bottom: 0;
-        }
-
-        .street-light::after {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: -4px;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 200, 100, 0.8);
-            border-radius: 50%;
-            box-shadow: 
-                0 0 20px rgba(255, 200, 100, 0.6),
-                0 0 40px rgba(255, 200, 100, 0.3);
-            animation: lightFlicker 4s ease-in-out infinite;
-        }
-
-        @keyframes lightFlicker {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 0.95; }
-        }
-
-        .light-glow {
-            position: absolute;
-            bottom: 0;
-            width: 150px;
-            height: 100px;
-            background: radial-gradient(ellipse at top, 
-                rgba(255, 200, 100, 0.1) 0%,
-                transparent 60%);
-            left: -75px;
-        }
-
-        /* Cars on street */
-        .street-car {
-            position: fixed;
-            bottom: 2%;
-            width: 30px;
-            height: 12px;
-            background: linear-gradient(to right, rgba(20, 20, 25, 0.9), rgba(30, 30, 35, 0.9));
-            border-radius: 2px;
-            z-index: 4;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-        }
-
-        .car-headlight {
-            position: absolute;
-            top: 50%;
-            width: 40px;
-            height: 20px;
-            background: radial-gradient(ellipse at left, 
-                rgba(255, 240, 200, 0.3) 0%,
-                rgba(255, 230, 180, 0.1) 50%,
-                transparent 100%);
-            left: -5px;
-            transform: translateY(-50%);
-        }
-
-        .car-taillight {
-            position: absolute;
-            top: 3px;
-            width: 2px;
-            height: 4px;
-            background: rgba(255, 0, 0, 0.8);
-            box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
-        }
-
-        /* Traffic lights */
-        .traffic-light {
-            position: fixed;
-            bottom: 8%;
-            width: 4px;
-            height: 35px;
-            background: rgba(30, 30, 35, 0.8);
-            z-index: 4;
-            border-radius: 1px;
-        }
-
-        .traffic-light::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 200, 0, 0.9);
-            border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255, 200, 0, 0.7);
-        }
-
-        /* Power lines */
-        .power-line {
-            position: fixed;
-            top: 25%;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right,
+            width: 1px;
+            height: 15px;
+            background: linear-gradient(to bottom, 
                 transparent 0%,
-                rgba(40, 40, 45, 0.3) 5%,
-                rgba(40, 40, 45, 0.3) 95%,
+                rgba(150, 180, 200, 0.3) 50%,
                 transparent 100%);
-            z-index: 6;
+            animation: rainFall 1s linear infinite;
         }
 
-        .power-line::before {
-            content: '';
-            position: absolute;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right,
-                transparent 0%,
-                rgba(40, 40, 45, 0.25) 5%,
-                rgba(40, 40, 45, 0.25) 95%,
-                transparent 100%);
-        }
-
-        /* Utility poles */
-        .utility-pole {
-            position: fixed;
-            bottom: 0;
-            width: 3px;
-            height: 40%;
-            background: linear-gradient(to top, 
-                rgba(35, 30, 25, 0.8) 0%,
-                rgba(30, 25, 20, 0.6) 100%);
-            z-index: 5;
-        }
-
-        .utility-pole::after {
-            content: '';
-            position: absolute;
-            top: 35%;
-            left: -8px;
-            width: 20px;
-            height: 2px;
-            background: rgba(35, 30, 25, 0.7);
+        @keyframes rainFall {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
 
         .police-lights {
@@ -1100,33 +437,6 @@
         @keyframes sirenFlashRed {
             0%, 95%, 100% { opacity: 0; }
             5%, 45%, 55%, 95% { opacity: 1; }
-        }
-
-        .light-beams {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            opacity: 0.4;
-            mix-blend-mode: screen;
-        }
-
-        .beam {
-            position: absolute;
-            width: 2px;
-            height: 40%;
-            background: linear-gradient(to bottom, 
-                rgba(100, 150, 255, 0.1) 0%,
-                transparent 100%);
-            transform-origin: top center;
-            animation: beamSweep 10s ease-in-out infinite;
-        }
-
-        @keyframes beamSweep {
-            0%, 100% { transform: rotate(-5deg); opacity: 0.3; }
-            50% { transform: rotate(5deg); opacity: 0.6; }
         }
 
         .main-content {
@@ -1283,89 +593,6 @@
             }
         }
 
-        .progress-shine {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.4) 50%, 
-                transparent 100%);
-            animation: progressShimmer 2s ease-in-out infinite;
-        }
-
-        @keyframes progressShimmer {
-            0% { left: -100%; }
-            100% { left: 200%; }
-        }
-
-        .blood-drips {
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            right: 0;
-            height: 30px;
-        }
-
-        .blood-drop {
-            position: absolute;
-            width: 4px;
-            height: 0;
-            background: linear-gradient(to bottom, 
-                rgba(120, 0, 0, 0.95) 0%,
-                rgba(90, 0, 0, 0.8) 40%,
-                rgba(70, 0, 0, 0.6) 70%,
-                rgba(50, 0, 0, 0.3) 100%);
-            border-radius: 0 0 50% 50%;
-            opacity: 0;
-            animation: bloodFall 4s ease-out infinite;
-            filter: blur(0.3px);
-        }
-
-        .blood-drop::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 4px;
-            height: 4px;
-            background: radial-gradient(circle, rgba(100, 0, 0, 0.6), transparent);
-            border-radius: 50%;
-        }
-
-        .blood-drop:nth-child(1) { left: 18%; animation-delay: 0.6s; }
-        .blood-drop:nth-child(2) { left: 35%; animation-delay: 1.4s; width: 3px; }
-        .blood-drop:nth-child(3) { left: 52%; animation-delay: 2.2s; }
-        .blood-drop:nth-child(4) { left: 68%; animation-delay: 0.9s; width: 5px; }
-        .blood-drop:nth-child(5) { left: 82%; animation-delay: 1.8s; }
-        .blood-drop:nth-child(6) { left: 92%; animation-delay: 2.7s; width: 3px; }
-
-        @keyframes bloodFall {
-            0% {
-                height: 0;
-                opacity: 0;
-            }
-            15% {
-                height: 15px;
-                opacity: 0.9;
-            }
-            35% {
-                height: 22px;
-                opacity: 0.7;
-            }
-            60% {
-                height: 28px;
-                opacity: 0.4;
-            }
-            100% {
-                height: 32px;
-                opacity: 0;
-                transform: translateY(8px);
-            }
-        }
-
         .loading-details {
             display: flex;
             justify-content: space-between;
@@ -1505,62 +732,20 @@
             font-weight: 700;
             color: rgba(255, 255, 255, 0.95);
             letter-spacing: 0.1em;
+            animation: policeFlash 2s ease-in-out infinite;
         }
 
-        .install-notice {
-            position: fixed;
-            bottom: 2.5rem;
-            left: 2.5rem;
-            padding: 1rem 1.5rem;
-            background: rgba(15, 15, 20, 0.6);
-            border: 1px solid rgba(80, 80, 100, 0.25);
-            border-radius: 6px;
-            backdrop-filter: blur(15px);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 2.2s;
-            z-index: 25;
-            max-width: 280px;
+        @keyframes policeFlash {
+            0%, 45%, 55%, 100% { 
+                color: rgba(0, 100, 255, 0.95);
+                text-shadow: 0 0 20px rgba(0, 100, 255, 0.8);
+            }
+            50% { 
+                color: rgba(255, 0, 50, 0.95);
+                text-shadow: 0 0 20px rgba(255, 0, 50, 0.8);
+            }
         }
 
-        .install-icon {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: rgba(100, 150, 255, 0.8);
-            border-radius: 50%;
-            margin-right: 0.6rem;
-            box-shadow: 0 0 10px rgba(100, 150, 255, 0.6);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .install-text {
-            font-size: 0.8rem;
-            color: rgba(180, 180, 180, 0.8);
-            letter-spacing: 0.05em;
-            line-height: 1.4;
-        }
-
-        .version-info {
-            position: fixed;
-            bottom: 6rem;
-            left: 2.5rem;
-            font-size: 0.7rem;
-            color: rgba(120, 120, 120, 0.5);
-            letter-spacing: 0.1em;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 2.5s;
-            z-index: 25;
-        }
-
-        /* Hint box - top left */
         .hint-box {
             position: fixed;
             top: 2.5rem;
@@ -1666,6 +851,135 @@
             font-weight: 600;
         }
 
+        .install-notice {
+            position: fixed;
+            bottom: 2.5rem;
+            left: 2.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 15, 20, 0.6);
+            border: 1px solid rgba(80, 80, 100, 0.25);
+            border-radius: 6px;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 2.2s;
+            z-index: 25;
+            max-width: 280px;
+        }
+
+        .install-icon {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: rgba(100, 150, 255, 0.8);
+            border-radius: 50%;
+            margin-right: 0.6rem;
+            box-shadow: 0 0 10px rgba(100, 150, 255, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .install-text {
+            font-size: 0.8rem;
+            color: rgba(180, 180, 180, 0.8);
+            letter-spacing: 0.05em;
+            line-height: 1.4;
+        }
+
+        .version-info {
+            position: fixed;
+            bottom: 6rem;
+            left: 2.5rem;
+            font-size: 0.7rem;
+            color: rgba(120, 120, 120, 0.5);
+            letter-spacing: 0.1em;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 2.5s;
+            z-index: 25;
+        }
+
+        .discord-link {
+            position: fixed;
+            bottom: 20%;
+            left: 22%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: rgba(88, 101, 242, 0.15);
+            border: 1px solid rgba(88, 101, 242, 0.4);
+            border-radius: 8px;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 8px 32px rgba(88, 101, 242, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 3s;
+            z-index: 21;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .discord-link:hover {
+            background: rgba(88, 101, 242, 0.25);
+            border-color: rgba(88, 101, 242, 0.6);
+            box-shadow: 
+                0 8px 40px rgba(88, 101, 242, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        .discord-icon {
+            width: 28px;
+            height: 28px;
+            fill: rgba(88, 101, 242, 1);
+            filter: drop-shadow(0 0 8px rgba(88, 101, 242, 0.6));
+        }
+
+        .discord-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .discord-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .discord-url {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 1);
+            letter-spacing: 0.08em;
+            font-weight: 800;
+            text-shadow: 
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                -2px 0 0 #000,
+                2px 0 0 #000,
+                0 -2px 0 #000,
+                0 2px 0 #000,
+                0 0 12px rgba(88, 101, 242, 0.9);
+            padding: 0.25rem 0.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
+            margin-top: 0.3rem;
+            display: inline-block;
+        }
+
         .vignette {
             position: fixed;
             top: 0;
@@ -1716,17 +1030,22 @@
             opacity: 0.4;
         }
 
-        .chromatic {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            box-shadow: 
-                inset 2px 0 3px rgba(255, 0, 0, 0.03),
-                inset -2px 0 3px rgba(0, 255, 255, 0.03);
-            pointer-events: none;
-            z-index: 99;
+        @keyframes beaconBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @media (max-width: 768px) {
+            .server-logo { font-size: 3rem; }
+            .hint-box, .owner-badge, .install-notice { max-width: 85%; }
+            .info-panels { flex-direction: column; gap: 1rem; bottom: 22%; }
+            .discord-link { 
+                bottom: 14%; 
+                padding: 0.8rem 1.5rem;
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -1747,36 +1066,15 @@
     
     <div class="fog-layer fog-layer-1"></div>
     <div class="fog-layer fog-layer-2"></div>
-
-    <div class="light-beams" id="lightBeams"></div>
     
     <div class="helicopter"></div>
-    <div class="searchlight"></div>
     
-    <div id="birds"></div>
-
-    <div class="heat-shimmer"></div>
-
     <div class="city-background">
         <div class="city-far" id="cityFar"></div>
         <div class="city-mid" id="cityMid"></div>
         <div class="city-near" id="cityNear"></div>
     </div>
 
-    <div class="smog-layer"></div>
-
-    <div class="power-line"></div>
-    <div id="utilityPoles"></div>
-    
-    <div id="steamVents"></div>
-
-    <div class="street-level">
-        <div class="street-lights" id="streetLights"></div>
-    </div>
-
-    <div id="streetCars"></div>
-    <div id="trafficLights"></div>
-    
     <div class="rain" id="rain"></div>
 
     <div class="police-lights">
@@ -1793,17 +1091,7 @@
 
         <div class="loading-wrapper">
             <div class="progress-outer">
-                <div class="progress-inner">
-                    <div class="progress-shine"></div>
-                </div>
-                <div class="blood-drips">
-                    <div class="blood-drop"></div>
-                    <div class="blood-drop"></div>
-                    <div class="blood-drop"></div>
-                    <div class="blood-drop"></div>
-                    <div class="blood-drop"></div>
-                    <div class="blood-drop"></div>
-                </div>
+                <div class="progress-inner"></div>
             </div>
 
             <div class="loading-details">
@@ -1830,9 +1118,19 @@
         </div>
     </div>
 
+    <a href="https://discord.gg/8ep84GfG48" target="_blank" class="discord-link">
+        <svg class="discord-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+        </svg>
+        <div class="discord-text">
+            <div class="discord-label">Join our Discord</div>
+            <div class="discord-url">discord.gg/8ep84GfG48</div>
+        </div>
+    </a>
+
     <div class="owner-badge">
         <div class="owner-label">Server Owner</div>
-        <div class="owner-name">FUNLARDON</div>
+        <div class="owner-name">SCOTSMAN</div>
     </div>
 
     <div class="hint-box">
@@ -1857,31 +1155,8 @@
     <div class="vignette"></div>
     <div class="grain"></div>
     <div class="scanlines"></div>
-    <div class="chromatic"></div>
 
     <script>
-        // Create realistic moon with craters
-        const moon = document.getElementById('moon');
-        const craterData = [
-            { top: 60, left: 55, size: 12 },
-            { top: 45, left: 30, size: 8 },
-            { top: 70, left: 40, size: 10 },
-            { top: 35, left: 65, size: 6 },
-            { top: 55, left: 75, size: 7 },
-            { top: 25, left: 45, size: 5 },
-            { top: 80, left: 60, size: 9 }
-        ];
-        
-        craterData.forEach(c => {
-            const crater = document.createElement('div');
-            crater.className = 'moon-crater';
-            crater.style.top = c.top + '%';
-            crater.style.left = c.left + '%';
-            crater.style.width = c.size + 'px';
-            crater.style.height = c.size + 'px';
-            moon.appendChild(crater);
-        });
-
         // Create mountains
         const mountainsContainer = document.getElementById('mountains');
         const mountains = [
@@ -1899,25 +1174,6 @@
             mountainsContainer.appendChild(mountain);
         });
 
-        // Create birds
-        const birdsContainer = document.getElementById('birds');
-        const birdData = [
-            { top: 22, left: 25, delay: 0, duration: 35 },
-            { top: 18, left: 45, delay: 3, duration: 40 },
-            { top: 25, left: 65, delay: 7, duration: 38 },
-            { top: 20, left: 15, delay: 12, duration: 42 }
-        ];
-        
-        birdData.forEach(b => {
-            const bird = document.createElement('div');
-            bird.className = 'bird';
-            bird.style.top = b.top + '%';
-            bird.style.left = b.left + '%';
-            bird.style.animation = `airplaneFly ${b.duration}s linear infinite`;
-            bird.style.animationDelay = b.delay + 's';
-            birdsContainer.appendChild(bird);
-        });
-
         // Create rain
         const rainContainer = document.getElementById('rain');
         for (let i = 0; i < 80; i++) {
@@ -1929,17 +1185,6 @@
             drop.style.opacity = Math.random() * 0.5 + 0.2;
             rainContainer.appendChild(drop);
         }
-
-        // Create steam vents
-        const steamContainer = document.getElementById('steamVents');
-        const steamPositions = [18, 42, 67, 89];
-        steamPositions.forEach((pos, i) => {
-            const steam = document.createElement('div');
-            steam.className = 'steam';
-            steam.style.left = pos + '%';
-            steam.style.animationDelay = (i * 1.5) + 's';
-            steamContainer.appendChild(steam);
-        });
 
         // Create stars
         const starsContainer = document.getElementById('stars');
@@ -1956,17 +1201,6 @@
             starsContainer.appendChild(star);
         }
 
-        const beamsContainer = document.getElementById('lightBeams');
-        for (let i = 0; i < 5; i++) {
-            const beam = document.createElement('div');
-            beam.className = 'beam';
-            beam.style.left = (i * 25 + 10) + '%';
-            beam.style.top = (Math.random() * 20) + '%';
-            beam.style.animationDelay = (i * 2) + 's';
-            beam.style.animationDuration = (8 + Math.random() * 4) + 's';
-            beamsContainer.appendChild(beam);
-        }
-
         function createCityLayer(container, buildings) {
             buildings.forEach(b => {
                 const building = document.createElement('div');
@@ -1974,125 +1208,6 @@
                 building.style.width = b.w + 'px';
                 building.style.height = b.h + 'px';
                 building.style.left = b.x + '%';
-
-                // Add building edges
-                const edgeLeft = document.createElement('div');
-                edgeLeft.className = 'building-edge-left';
-                building.appendChild(edgeLeft);
-                
-                const edgeRight = document.createElement('div');
-                edgeRight.className = 'building-edge-right';
-                building.appendChild(edgeRight);
-
-                // Add antenna to some tall buildings
-                if (b.h > 280 && Math.random() > 0.6) {
-                    const antenna = document.createElement('div');
-                    antenna.className = 'building-antenna';
-                    building.appendChild(antenna);
-                }
-
-                // Add water tower
-                if (b.h > 250 && Math.random() > 0.7) {
-                    const waterTower = document.createElement('div');
-                    waterTower.className = 'water-tower';
-                    waterTower.style.left = (Math.random() * (b.w - 20) + 10) + 'px';
-                    building.appendChild(waterTower);
-                }
-
-                // Add chimney with smoke
-                if (b.h > 200 && Math.random() > 0.65) {
-                    const chimney = document.createElement('div');
-                    chimney.className = 'chimney';
-                    chimney.style.top = '-15px';
-                    chimney.style.left = (Math.random() * (b.w - 10) + 5) + 'px';
-                    
-                    const smoke = document.createElement('div');
-                    smoke.className = 'smoke';
-                    smoke.style.animationDelay = (Math.random() * 3) + 's';
-                    chimney.appendChild(smoke);
-                    
-                    building.appendChild(chimney);
-                }
-
-                // Add rooftop details
-                if (Math.random() > 0.5) {
-                    const rooftop = document.createElement('div');
-                    rooftop.className = 'rooftop-detail';
-                    rooftop.style.width = (b.w * 0.8) + 'px';
-                    rooftop.style.left = (b.w * 0.1) + 'px';
-                    building.appendChild(rooftop);
-                }
-
-                // Add rooftop garden
-                if (b.h > 220 && Math.random() > 0.75) {
-                    const garden = document.createElement('div');
-                    garden.className = 'rooftop-garden';
-                    garden.style.width = (b.w * 0.6) + 'px';
-                    garden.style.left = (b.w * 0.2) + 'px';
-                    building.appendChild(garden);
-                }
-
-                // Add AC units
-                if (b.h > 200 && Math.random() > 0.6) {
-                    const acUnit = document.createElement('div');
-                    acUnit.className = 'ac-unit';
-                    acUnit.style.left = (Math.random() * (b.w - 15) + 5) + 'px';
-                    building.appendChild(acUnit);
-                }
-
-                // Add ventilation shafts
-                if (b.h > 240 && Math.random() > 0.7) {
-                    const vent = document.createElement('div');
-                    vent.className = 'vent-shaft';
-                    vent.style.top = '-8px';
-                    vent.style.left = (Math.random() * (b.w - 10) + 5) + 'px';
-                    building.appendChild(vent);
-                }
-
-                // Add satellite dish
-                if (b.h > 180 && Math.random() > 0.75) {
-                    const dish = document.createElement('div');
-                    dish.className = 'satellite-dish';
-                    dish.style.top = '-4px';
-                    dish.style.left = (Math.random() * (b.w - 12) + 6) + 'px';
-                    building.appendChild(dish);
-                }
-
-                // Add fire escape to some buildings
-                if (b.h > 250 && Math.random() > 0.7) {
-                    const fireEscape = document.createElement('div');
-                    fireEscape.className = 'fire-escape';
-                    fireEscape.style.right = '8px';
-                    fireEscape.style.top = '15%';
-                    fireEscape.style.height = '70%';
-                    building.appendChild(fireEscape);
-                }
-
-                // Add billboard to some tall buildings
-                if (b.h > 300 && Math.random() > 0.8) {
-                    const billboard = document.createElement('div');
-                    billboard.className = 'billboard';
-                    billboard.style.width = '25px';
-                    billboard.style.height = '15px';
-                    billboard.style.top = '20%';
-                    billboard.style.right = '-5px';
-                    building.appendChild(billboard);
-                }
-
-                // Add neon signs with variety
-                if (b.h > 180 && Math.random() > 0.7) {
-                    const neon = document.createElement('div');
-                    neon.className = 'neon-sign';
-                    const colors = ['', 'pink', 'yellow'];
-                    const colorClass = colors[Math.floor(Math.random() * colors.length)];
-                    if (colorClass) neon.classList.add(colorClass);
-                    neon.style.width = (Math.random() * 10 + 15) + 'px';
-                    neon.style.height = (Math.random() * 5 + 6) + 'px';
-                    neon.style.top = (Math.random() * 40 + 30) + '%';
-                    neon.style.left = (Math.random() * (b.w - 25) + 5) + 'px';
-                    neon.style.animationDelay = (Math.random() * 2) + 's';
-                    building.appendChild(neon);
-                }
 
                 // Add windows
                 const windowsX = Math.floor(b.w / 12);
@@ -2111,28 +1226,6 @@
                             win.style.animationDelay = (Math.random() * 5) + 's';
                             win.style.animationDuration = (Math.random() * 3 + 4) + 's';
                             building.appendChild(win);
-                            
-                            // Add window AC units occasionally
-                            if (Math.random() > 0.92 && y > 3) {
-                                const windowAC = document.createElement('div');
-                                windowAC.className = 'window-ac';
-                                windowAC.style.left = (x * 12 + 2) + 'px';
-                                windowAC.style.top = (y * 18 + 8) + 'px';
-                                building.appendChild(windowAC);
-                            }
-                        }
-                    }
-                }
-
-                // Add balconies
-                if (b.h > 200) {
-                    for (let i = 0; i < Math.floor(Math.random() * 4) + 2; i++) {
-                        if (Math.random() > 0.6) {
-                            const balcony = document.createElement('div');
-                            balcony.className = 'balcony';
-                            balcony.style.left = (Math.random() * (b.w - 12) + 4) + 'px';
-                            balcony.style.top = (Math.random() * (b.h - 50) + 30) + 'px';
-                            building.appendChild(balcony);
                         }
                     }
                 }
@@ -2187,75 +1280,6 @@
         createCityLayer(document.getElementById('cityFar'), cityFar);
         createCityLayer(document.getElementById('cityMid'), cityMid);
         createCityLayer(document.getElementById('cityNear'), cityNear);
-
-        // Create utility poles
-        const utilityPolesContainer = document.getElementById('utilityPoles');
-        const polePositions = [15, 45, 75];
-        polePositions.forEach(pos => {
-            const pole = document.createElement('div');
-            pole.className = 'utility-pole';
-            pole.style.left = pos + '%';
-            utilityPolesContainer.appendChild(pole);
-        });
-
-        // Create street lights
-        const streetLightsContainer = document.getElementById('streetLights');
-        const lightPositions = [8, 22, 38, 54, 68, 82, 95];
-        lightPositions.forEach(pos => {
-            const light = document.createElement('div');
-            light.className = 'street-light';
-            light.style.left = pos + '%';
-            
-            const glow = document.createElement('div');
-            glow.className = 'light-glow';
-            light.appendChild(glow);
-            
-            streetLightsContainer.appendChild(light);
-        });
-
-        // Create street cars
-        const carsContainer = document.getElementById('streetCars');
-        const carPositions = [
-            { left: 10, delay: 0, headlights: true },
-            { left: 35, delay: 2, headlights: false },
-            { left: 60, delay: 4, headlights: true },
-            { left: 88, delay: 1, headlights: false }
-        ];
-        
-        carPositions.forEach(c => {
-            const car = document.createElement('div');
-            car.className = 'street-car';
-            car.style.left = c.left + '%';
-            car.style.animationDelay = c.delay + 's';
-            
-            if (c.headlights) {
-                const headlight = document.createElement('div');
-                headlight.className = 'car-headlight';
-                car.appendChild(headlight);
-            } else {
-                const taillight = document.createElement('div');
-                taillight.className = 'car-taillight';
-                taillight.style.right = '2px';
-                car.appendChild(taillight);
-                
-                const taillight2 = document.createElement('div');
-                taillight2.className = 'car-taillight';
-                taillight2.style.right = '5px';
-                car.appendChild(taillight2);
-            }
-            
-            carsContainer.appendChild(car);
-        });
-
-        // Create traffic lights
-        const trafficLightsContainer = document.getElementById('trafficLights');
-        const trafficLightPositions = [25, 55, 85];
-        trafficLightPositions.forEach(pos => {
-            const light = document.createElement('div');
-            light.className = 'traffic-light';
-            light.style.left = pos + '%';
-            trafficLightsContainer.appendChild(light);
-        });
 
         // Loading system
         const statusMessages = [
